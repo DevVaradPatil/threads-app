@@ -10,14 +10,8 @@ interface Props{
 }
 
 const ThreadsTab = async ({currentUserId,accountId, accountType} : Props) => {
-    
-    let result: any;
-
-    if(accountType=== "Community"){
-        result = await fetchCommunityPosts(accountId);
-    }else{
+        
     let result = await fetchUserPosts(accountId);
-    }
     if(!result) redirect('/');
     
     return (
