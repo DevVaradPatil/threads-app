@@ -14,6 +14,7 @@ interface Props {
     image: string;
     id: string;
   };
+  repostauthor: string;
   community: {
     id: string;
     name: string;
@@ -38,6 +39,7 @@ function ThreadCard({
   createdAt,
   comments,
   isComment,
+  repostauthor
 }: Props) {
   return (
     <article
@@ -65,6 +67,10 @@ function ThreadCard({
               <h4 className='cursor-pointer text-base-semibold text-light-1'>
                 {author.name}
               </h4>
+              {repostauthor && 
+                <h4 className="text-base-regular text-gray-1">Reposted by {repostauthor}</h4>
+              }
+              
             </Link>
 
             <p className='mt-2 text-base-regular text-light-2'>{content}</p>
@@ -87,6 +93,7 @@ function ThreadCard({
                     className='cursor-pointer object-contain'
                   />
                 </Link>
+                <Link href={`/repost/${id}`}>
                 <Image
                   src='/assets/repost.svg'
                   alt='heart'
@@ -94,6 +101,7 @@ function ThreadCard({
                   height={24}
                   className='cursor-pointer object-contain'
                 />
+                </Link>
                 <Image
                   src='/assets/share.svg'
                   alt='heart'

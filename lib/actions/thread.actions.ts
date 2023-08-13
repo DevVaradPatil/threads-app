@@ -53,9 +53,10 @@ interface Params {
   author: string,
   communityId: string | null,
   path: string,
+  repostauthor: string | null,
 }
 
-export async function createThread({ text, author, communityId, path }: Params
+export async function createThread({ text, author, communityId, path, repostauthor }: Params
 ) {
   try {
     connectToDB();
@@ -68,6 +69,7 @@ export async function createThread({ text, author, communityId, path }: Params
     const createdThread = await Thread.create({
       text,
       author,
+      repostauthor,
       community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
     });
 

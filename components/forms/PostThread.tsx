@@ -44,6 +44,7 @@ function PostThread({ userId }: Props) {
       author: userId,
       communityId: organization ? organization.id : null,
       path: pathname,
+      repostauthor: null
     });
 
     router.push("/");
