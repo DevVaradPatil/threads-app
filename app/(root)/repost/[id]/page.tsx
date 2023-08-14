@@ -17,6 +17,7 @@ async function Page({ params }: { params: { id: string } }) {
     const thread = await fetchThreadById(params.id);
     const threadtext = thread.text.toString()
     const threadauthor = thread.author._id.toString()
+
     return (
         <>
             <RepostThread userId={userInfo.name.toString()} threadtext={threadtext} threadauthor={threadauthor}/>

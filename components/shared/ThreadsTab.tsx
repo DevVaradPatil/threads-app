@@ -30,6 +30,7 @@ interface Result {
       };
     }[];
     repostauthor: string;
+    likes:string[];
   }[];
 }
 
@@ -78,6 +79,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
           createdAt={thread.createdAt}
           comments={thread.children}
           repostauthor={thread.repostauthor}
+          likes={thread.likes} 
         />
       ))}
     </section>

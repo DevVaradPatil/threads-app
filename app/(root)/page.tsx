@@ -44,6 +44,7 @@ async function Home({
                 createdAt={post.createdAt}
                 comments={post.children}
                 repostauthor={post.repostauthor}
+                likes={post.likes}
               />
             ))}
           </>

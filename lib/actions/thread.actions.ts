@@ -240,3 +240,17 @@ export async function addCommentToThread(
     throw new Error("Unable to add comment");
   }
 }
+
+export async function likeThread(threadId: string, userId: string) {
+  try {
+      const thread = await Thread.findByIdAndUpdate(
+          threadId,
+          { $addToSet: { likes: userId } }, // Corrected syntax here
+          { new: true } // To get the updated thread object after the update
+      );
+
+      return thread;
+  } catch (error: any) {
+      throw new Error(`Failed to like thread: ${error.message}`);
+  }
+}
