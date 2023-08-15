@@ -241,13 +241,19 @@ export async function addCommentToThread(
   }
 }
 
-export async function likeThread(threadId: string, userId: string) {
+export async function likeThread(threadId: string, userId: string, name: string, image: string) {
   try {
-      const thread = await Thread.findByIdAndUpdate(
-          threadId,
-          { $addToSet: { likes: userId } }, // Corrected syntax here
-          { new: true } // To get the updated thread object after the update
-      );
+    const thread1 = await Thread.findById(threadId);
+    const existingLikes = thread1.likes.filter((like:any) => like._id === userId);
+    if (existingLikes.length > 0) {
+      // The userId already exists, so don't update the likes array.
+      return thread1;
+    }
+    const thread = await Thread.findByIdAndUpdate(
+      threadId,
+      { $push: { likes: { _id: userId, name: name, image: image } } },
+      { new: true }
+  );
 
       return thread;
   } catch (error: any) {

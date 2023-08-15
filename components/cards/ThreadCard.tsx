@@ -26,7 +26,11 @@ interface Props {
     };
   }[];
   isComment?: boolean;
-  likes: string[];
+  likes: {
+    _id: string;
+    name: string;
+    image: string;
+  }[];
 }
 
 function ThreadCard({
@@ -42,8 +46,9 @@ function ThreadCard({
   repostauthor,
   likes,
 }: Props) {
-  const currentUserLiked = likes.some(like => like === currentUserId);
-  console.log(currentUserLiked);
+  console.log(likes);
+  
+  const currentUserLiked = likes.some(like => like._id === currentUserId);
   
   return (
     <article

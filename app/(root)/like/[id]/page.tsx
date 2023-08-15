@@ -11,7 +11,7 @@ async function Page({ params }: { params: { id: string } }) {
     const userInfo = await fetchUser(user.id);
     return (
         <>
-            <LikeThread userId={userInfo.id} threadId={params.id}/>
+            <LikeThread userId={userInfo.id} threadId={params.id} name={userInfo.name} image={userInfo.image}/>
         </>
     )    }
 
