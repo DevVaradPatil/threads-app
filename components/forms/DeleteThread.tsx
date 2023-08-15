@@ -23,10 +23,10 @@ function DeleteThread({
   const pathname = usePathname();
   const router = useRouter();
 
-  if (currentUserId !== authorId || pathname === "/") return null;
+  if (currentUserId !== authorId || pathname === "/" || !pathname.includes('/profile')) return null;
 
   return (
-    <div className=" bg-dark-3 p-1">
+    <div className=" bg-dark-3 p-1 rounded-sm">
     <Image
       src='/assets/delete.svg'
       alt='delte'

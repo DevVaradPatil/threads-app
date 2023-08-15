@@ -12,9 +12,8 @@ interface Props {
 }
 
 async function LikeThread({ userId, threadId, name, image }: Props) {
-  
-  await likeThread(threadId, userId, name, image);
-
+  const path = usePathname()
+  await likeThread(threadId, userId, name, image, path);
   return <></>;
 }
 

@@ -46,7 +46,6 @@ function ThreadCard({
   repostauthor,
   likes,
 }: Props) {
-  console.log(likes);
   
   const currentUserLiked = likes.some(like => like._id === currentUserId);
   

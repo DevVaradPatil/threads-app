@@ -7,6 +7,7 @@ import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import Thread from "../models/thread.model";
 import Community from "../models/community.model";
+import { useRouter } from "next/navigation";
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
@@ -241,7 +242,7 @@ export async function addCommentToThread(
   }
 }
 
-export async function likeThread(threadId: string, userId: string, name: string, image: string) {
+export async function likeThread(threadId: string, userId: string, name: string, image: string, path: string) {
   try {
     const thread1 = await Thread.findById(threadId);
     const existingLikes = thread1.likes.filter((like:any) => like._id === userId);
@@ -254,7 +255,7 @@ export async function likeThread(threadId: string, userId: string, name: string,
       { $push: { likes: { _id: userId, name: name, image: image } } },
       { new: true }
   );
-
+      revalidatePath(path)
       return thread;
   } catch (error: any) {
       throw new Error(`Failed to like thread: ${error.message}`);

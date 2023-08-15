@@ -15,9 +15,6 @@ async function RepostThread({ userId, threadtext, threadauthor }: Props) {
 
   const router = useRouter();
   const pathname = usePathname();
-    console.log('THREAD TEXT: ' , threadtext);
-    console.log('THREAD TEXT: ' , threadauthor);
-    console.log(userId);
     
   const { organization } = useOrganization();
     await createThread({
