@@ -30,7 +30,11 @@ interface Result {
       };
     }[];
     repostauthor: string;
-    likes:string[];
+    likes:{
+      _id: string;
+      name: string;
+      image: string;
+    }[];
   }[];
 }
 
