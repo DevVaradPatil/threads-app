@@ -46,13 +46,35 @@ function ThreadCard({
   repostauthor,
   likes,
 }: Props) {
-  
-  const currentUserLiked = likes.some(like => like._id === currentUserId);
-  
+  const currentUserLiked = likes.some((like) => like._id === currentUserId);
+  const date = new Date(createdAt);
+  const now = new Date();
+
+  const timeDifferenceInSeconds = Math.floor(
+    (now.getTime() - date.getTime()) / 1000
+  );
+  let formattedTimeAgo = "";
+
+  if (timeDifferenceInSeconds < 60) {
+    formattedTimeAgo = `${timeDifferenceInSeconds}s ago`;
+  } else if (timeDifferenceInSeconds < 3600) {
+    const minutes = Math.floor(timeDifferenceInSeconds / 60);
+    formattedTimeAgo = `${minutes}min ago`;
+  } else if (timeDifferenceInSeconds < 86400) {
+    const hours = Math.floor(timeDifferenceInSeconds / 3600);
+    formattedTimeAgo = `${hours}hr ago`;
+  } else if (timeDifferenceInSeconds < 604800) {
+    const days = Math.floor(timeDifferenceInSeconds / 86400);
+    formattedTimeAgo = `${days}d ago`;
+  } else {
+    const weeks = Math.floor(timeDifferenceInSeconds / 604800);
+    formattedTimeAgo = `${weeks}w ago`;
+  }
+
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
+        isComment ? "px-0 xs:px-7" : "p-7 bg-dark-2"
       }`}
     >
       <div className="flex items-start justify-between">
@@ -88,14 +110,18 @@ function ThreadCard({
               <div className="flex gap-3.5">
                 <Link
                   href={`/like/${id}`}
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center  "
                 >
                   <Image
-                    src={currentUserLiked ? "/assets/heart-filled.svg" : "/assets/heart-gray.svg"}
+                    src={
+                      currentUserLiked
+                        ? "/assets/heart-filled.svg"
+                        : "/assets/heart-gray.svg"
+                    }
                     alt="heart"
                     width={24}
                     height={24}
-                    className="cursor-pointer object-contain"
+                    className="cursor-pointer object-contain transition"
                   />
                   {likes.length > 0 && (
                     <span className="text-subtle-medium text-gray-1 px-1">
@@ -109,7 +135,7 @@ function ThreadCard({
                     alt="heart"
                     width={24}
                     height={24}
-                    className="cursor-pointer object-contain"
+                    className="cursor-pointer object-contain transition"
                   />
                 </Link>
                 <Link href={`/repost/${id}`}>
@@ -118,7 +144,7 @@ function ThreadCard({
                     alt="heart"
                     width={22}
                     height={22}
-                    className="cursor-pointer object-contain"
+                    className="cursor-pointer object-contain transition"
                   />
                 </Link>
                 <Image
@@ -170,6 +196,9 @@ function ThreadCard({
           </Link>
         </div>
       )}
+      <p className="ml-1 mt-3 flex items-center gap-2  text-subtle-medium text-gray-1">
+        {formattedTimeAgo}
+      </p>
 
       {!isComment && community && (
         <Link

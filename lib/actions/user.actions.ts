@@ -177,8 +177,20 @@ export async function getActivity(userId: string) {
       model: User,
       select: "name image _id",
     });
+    
+    const likesActivity = await Thread.find({
+      author: userId,
+      "likes._id": { $ne: userId }, // Exclude threads liked by the same user
+      "likes.0": { $exists: true }, // Ensure likes array has at least one element
+    }).populate({
+      path: "likes",
+      model: User,
+      select: "name image _id",
+    });
 
-    return replies;
+    return {
+      replies, likesActivity
+    };
   } catch (error) {
     console.error("Error fetching replies: ", error);
     throw error;

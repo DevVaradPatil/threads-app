@@ -192,6 +192,14 @@ module.exports = {
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
         "groups-sidebar": "-30px 0px 60px 0px rgba(28, 28, 31, 0.50)",
+        'glow-red-pink': '0 0 10px rgba(255, 0, 102, 0.5)',
+        'glow-blue': '0 0 10px rgba(0, 102, 255, 0.5)',
+        'glow-green': '0 0 10px rgba(0, 204, 102, 0.5)',
+      },
+      dropShadow: {
+        'glow-red-pink': '0px 0 10px rgba(255, 0, 102, 0.5)',
+        'glow-blue': '0 0 10px rgba(0, 102, 255, 0.5)',
+        'glow-green': '0 0 10px rgba(0, 204, 102, 0.5)',
       },
       screens: {
         xs: "400px",
@@ -205,6 +213,9 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+      },
+      backgroundImage: {
+        'gradient': 'linear-gradient(135deg, #262626, #1a1a1a)',
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
