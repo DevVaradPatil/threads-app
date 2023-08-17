@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { OrganizationSwitcher, SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
+import { usePathname } from 'next/navigation';
 
 function Topbar() {
     return (
@@ -10,7 +11,6 @@ function Topbar() {
                 <Image src="/assets/logotwe.png" alt="logo" width={40} height={40}/>
                 <p className='text-heading3-bold text-light-1 max-xs:hidden'>Threads</p>
             </Link>
-
             <div className='flex items-center gap-1'>
                 <div className='block md:hidden'>
                     <SignedIn>

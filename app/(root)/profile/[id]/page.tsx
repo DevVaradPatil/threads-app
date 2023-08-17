@@ -29,10 +29,10 @@ async function Page({ params }: { params: { id: string } }) {
       />
 
       <div className="mt-5">
-        <Tabs defaultValue="threads" className="w-full">
-          <TabsList className="tab">
+        <Tabs defaultValue="threads" className="w-full rounded-lg">
+          <TabsList className="tab p-0 rounded-lg">
             {profileTabs.map((tab) => (
-              <TabsTrigger key={tab.label} value={tab.value} className="tab">
+              <TabsTrigger key={tab.label} value={tab.value} className="tab rounded-lg">
                 <Image
                   src={tab.icon}
                   alt={tab.label}
