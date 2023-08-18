@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
+import Buttons from "../shared/Buttons";
+import RepostButton from "../shared/RepostButton";
 interface Props {
   id: string;
   currentUserId: string;
@@ -138,22 +140,8 @@ function ThreadCard({
                     className="cursor-pointer object-contain transition"
                   />
                 </Link>
-                <Link href={`/repost/${id}`}>
-                  <Image
-                    src="/assets/repost.svg"
-                    alt="heart"
-                    width={22}
-                    height={22}
-                    className="cursor-pointer object-contain transition"
-                  />
-                </Link>
-                <Image
-                  src="/assets/share.svg"
-                  alt="heart"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer object-contain"
-                />
+                <RepostButton id={id}/>
+                <Buttons id={id}/>
               </div>
 
               {isComment && comments.length > 0 && (

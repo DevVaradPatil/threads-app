@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { createThread } from "@/lib/actions/thread.actions";
 
+
 interface Props {
   userId: string;
   threadtext: string;
@@ -12,7 +13,6 @@ interface Props {
 }
 
 async function RepostThread({ userId, threadtext, threadauthor }: Props) {
-
   const router = useRouter();
   const pathname = usePathname();
     
