@@ -79,7 +79,7 @@
   }
 
   .leftsidebar_link {
-    @apply relative flex justify-start gap-4 rounded-lg p-4;
+    @apply relative flex justify-start gap-4 rounded-lg p-4 border transition border-dark-2 hover:border-dark-3 hover:bg-dark-3 ;
   }
 
   .pagination {

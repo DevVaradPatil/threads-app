@@ -140,7 +140,7 @@ function ThreadCard({
                 </Link>
                 <Link href={`/repost/${id}`}>
                   <Image
-                    src="/assets/repost.png"
+                    src="/assets/repost.svg"
                     alt="heart"
                     width={22}
                     height={22}
