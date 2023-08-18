@@ -73,7 +73,7 @@ function ThreadCard({
 
   return (
     <article
-      className={`flex w-full flex-col rounded-xl h-full bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60  ${
+      className={`flex w-full flex-col rounded-xl h-full ${
         isComment ? "px-0 xs:px-7" : "p-7 bg-dark-2"
       }`}
     >
