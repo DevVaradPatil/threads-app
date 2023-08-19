@@ -5,6 +5,7 @@ import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
 import Buttons from "../shared/Buttons";
 import RepostButton from "../shared/RepostButton";
+import LikeButton from "../shared/LikeButton";
 interface Props {
   id: string;
   currentUserId: string;
@@ -48,7 +49,7 @@ function ThreadCard({
   repostauthor,
   likes,
 }: Props) {
-  const currentUserLiked = likes.some((like) => like._id === currentUserId);
+  let currentUserLiked = likes.some((like) => like._id === currentUserId);
   const date = new Date(createdAt);
   const now = new Date();
 
@@ -114,7 +115,7 @@ function ThreadCard({
                   href={`/like/${id}`}
                   className="flex items-center justify-center  "
                 >
-                  <Image
+                  {/* <Image
                     src={
                       currentUserLiked
                         ? "/assets/heart-filled.svg"
@@ -124,7 +125,8 @@ function ThreadCard({
                     width={24}
                     height={24}
                     className="cursor-pointer object-contain transition"
-                  />
+                  /> */}
+                  <LikeButton currentUserLiked={currentUserLiked}/>
                   {likes.length > 0 && (
                     <span className="text-subtle-medium text-gray-1 px-1">
                       {likes.length}

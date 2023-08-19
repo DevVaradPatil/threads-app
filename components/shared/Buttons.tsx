@@ -57,7 +57,7 @@ function Buttons({id}: Props) {
           onClick={handleMenuToggle}
         />
         {isClicked && (
-          <div className="absolute top-10 right-30 z-10 bg-dark-3 rounded-lg p-2 w-[200px]">
+          <div className="absolute top-10 right-30 z-10 bg-dark-3 rounded-lg p-2 w-[200px] max-sm:right-0">
             <Image
               src="/assets/close.png"
               alt="close"
