@@ -1,5 +1,6 @@
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import RepliesTab from "@/components/shared/RepliesTab";
+import SavedTab from "@/components/shared/SavedTab";
 import ThreadsTab from "@/components/shared/ThreadsTab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { profileTabs } from "@/constants";
@@ -67,6 +68,16 @@ async function Page({ params }: { params: { id: string } }) {
               className="w-full"
             >
               <RepliesTab
+                currentUserId={user.id}
+                accountId={userInfo.id}
+              />
+            </TabsContent>
+            <TabsContent
+              key="content-Saved"
+              value='saved'
+              className="w-full"
+            >
+              <SavedTab
                 currentUserId={user.id}
                 accountId={userInfo.id}
               />
