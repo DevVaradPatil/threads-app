@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react"; 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useOrganization } from "@clerk/nextjs";
@@ -38,6 +39,15 @@ function PostThread({ userId }: Props) {
     },
   });
 
+  
+  const [charCount, setCharCount] = useState(0);
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+    setCharCount(text.length); // Update character count
+    form.setValue("thread", text); // Update form value
+  };
+
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     await createThread({
       text: values.thread,
@@ -53,7 +63,7 @@ function PostThread({ userId }: Props) {
   return (
     <Form {...form}>
       <form
-        className='mt-10 flex flex-col justify-start gap-10'
+        className='mt-10 flex flex-col justify-start gap-5'
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -65,8 +75,11 @@ function PostThread({ userId }: Props) {
                 Content
               </FormLabel>
               <FormControl className='no-focus border border-dark-4 bg-dark-3 text-light-1'>
-                <Textarea rows={15} {...field} />
+                <Textarea rows={15} {...field} maxLength={1750} onChange={handleTextareaChange} />
               </FormControl>
+              <div className="text-base-regular text-gray-1">
+                Characters remaining: {1750 - charCount} / 1750
+              </div>
               <FormMessage />
             </FormItem>
           )}

@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Community"
         }
+    ],
+    saved : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Thread"
+        }
     ]
 });
 

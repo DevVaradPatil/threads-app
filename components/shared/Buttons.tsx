@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import UniversalMessage from "./UniversalMessage";
+import Link from "next/link";
 
 interface Props{
     id: string,
@@ -45,11 +46,15 @@ function Buttons({id}: Props) {
     setIsClicked(!isClicked);
   };
 
+  const handleSaveClick = ()=>{
+    setShowMessage("Thread Saved!");
+  }
+
   return (
     <>
       <div className="relative inline-block">
         <Image
-          src="/assets/share.svg"
+          src="/assets/more.svg"
           alt="share"
           width={24}
           height={24}
@@ -80,6 +85,15 @@ function Buttons({id}: Props) {
             >
               Share Thread Via
             </button>
+            <Link href={`/save/${id}`}>
+            <div className="w-full h-[2px] mt-1 bg-dark-2"/>
+            <button
+              className="text-base-regular text-light-2 px-1 rounded cursor-pointer mt-2"
+              onClick={handleSaveClick}
+            >
+              Save Thread
+            </button>
+            </Link>
           </div>
         )}
         {showMessage && <UniversalMessage message={showMessage} />}

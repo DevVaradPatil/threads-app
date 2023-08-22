@@ -115,17 +115,6 @@ function ThreadCard({
                   href={`/like/${id}`}
                   className="flex items-center justify-center  "
                 >
-                  {/* <Image
-                    src={
-                      currentUserLiked
-                        ? "/assets/heart-filled.svg"
-                        : "/assets/heart-gray.svg"
-                    }
-                    alt="heart"
-                    width={24}
-                    height={24}
-                    className="cursor-pointer object-contain transition"
-                  /> */}
                   <LikeButton currentUserLiked={currentUserLiked}/>
                   {likes.length > 0 && (
                     <span className="text-subtle-medium text-gray-1 px-1">

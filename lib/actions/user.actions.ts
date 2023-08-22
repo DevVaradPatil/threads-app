@@ -177,7 +177,7 @@ export async function getActivity(userId: string) {
       model: User,
       select: "name image _id",
     });
-    
+
     const likesActivity = await Thread.find({
       author: userId,
       "likes._id": { $ne: userId }, // Exclude threads liked by the same user
@@ -189,10 +189,43 @@ export async function getActivity(userId: string) {
     });
 
     return {
-      replies, likesActivity
+      replies,
+      likesActivity,
     };
   } catch (error) {
     console.error("Error fetching replies: ", error);
+    throw error;
+  }
+}
+
+export async function saveThread(userId: string, threadId: string) {
+  try {
+    connectToDB();
+
+    // Fetch the user by userId
+    const user = await User.findOne({ id: userId });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    // Check if the threadId already exists in the 'saved' array
+    if (!user.saved.includes(threadId)) {
+      // If not, add it to the 'saved' array
+      user.saved.push(threadId);
+      console.log("Thread saved successfully");
+    } else {
+      console.log("Thread already exists in the 'saved' array");
+    }
+
+    // Update the user object in the database
+    await User.findOneAndUpdate(
+      { id: userId },
+      { saved: user.saved }, // Update the 'saved' array
+      { upsert: true } // Create a new user if not found
+    );
+  } catch (error) {
+    console.error("Error saving thread:", error);
     throw error;
   }
 }
