@@ -41,6 +41,7 @@ function PostThread({ userId }: Props) {
 
   
   const [charCount, setCharCount] = useState(0);
+  const [isClicked, setIsClicked] = useState(false)
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
@@ -85,8 +86,8 @@ function PostThread({ userId }: Props) {
           )}
         />
 
-        <Button type='submit' className='bg-primary-500'>
-          Post Thread
+        <Button type='submit' className={isClicked? "bg-slate-900" : "bg-primary-500"} onClick={()=> setIsClicked(true)}>
+          {isClicked ? "Posting..." : "Post Thread"}
         </Button>
       </form>
     </Form>
