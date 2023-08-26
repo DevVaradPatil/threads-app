@@ -217,13 +217,13 @@ export async function saveThread(userId: string, threadId: string) {
     } else {
       console.log("Thread already exists in the 'saved' array");
     }
-
     // Update the user object in the database
     await User.findOneAndUpdate(
       { id: userId },
       { saved: user.saved }, // Update the 'saved' array
       { upsert: true } // Create a new user if not found
-    );
+      );
+      await User.findByIdAndUpdate(userId, { lastCheckedActivity: new Date() });
   } catch (error) {
     console.error("Error saving thread:", error);
     throw error;

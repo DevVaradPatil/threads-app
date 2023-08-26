@@ -1,4 +1,3 @@
-import UserCard from "@/components/cards/UserCard";
 import { fetchUser, fetchUsers, getActivity } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
@@ -18,7 +17,6 @@ async function Page() {
   const filteredLikesActivity = likesActivity.filter(activity => 
     activity.likes.every((like: any) => like._id.toString() !== userInfo.id.toString())
   );
-  console.log('FILTER:-----------------------------' ,filteredLikesActivity)
   
   
   const result = await fetchUsers({
