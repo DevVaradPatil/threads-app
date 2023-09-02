@@ -6,9 +6,10 @@ import Link from "next/link";
 
 interface Props{
     id: string,
+    isSaved: boolean | undefined,
 }
 
-function Buttons({id}: Props) {
+function Buttons({id, isSaved}: Props) {
   const [isClicked, setIsClicked] = useState(false);
   const [showMessage, setShowMessage] = useState("");
   const handleShareClick = async () => {
@@ -72,6 +73,16 @@ function Buttons({id}: Props) {
               className="absolute text-white py-1 px-2 rounded cursor-pointer right-0"
               onClick={handleMenuToggle}
             />
+            <Link href={`/save/${id}`}>
+             
+            <button
+              className="text-base-regular text-light-2 px-1 rounded cursor-pointer mt-2"
+              onClick={handleSaveClick}
+            >
+              {isSaved ? "Remove from saved" : "Save Thread"}
+            </button>
+            </Link>
+            <div className="w-full h-[2px] mt-1 bg-dark-2"/> 
             <button
               className="text-base-regular text-light-2 px-1 rounded cursor-pointer mt-2"
               onClick={handleCopyLink}
@@ -85,15 +96,7 @@ function Buttons({id}: Props) {
             >
               Share Thread Via
             </button>
-            <Link href={`/save/${id}`}>
-            <div className="w-full h-[2px] mt-1 bg-dark-2"/>
-            <button
-              className="text-base-regular text-light-2 px-1 rounded cursor-pointer mt-2"
-              onClick={handleSaveClick}
-            >
-              Save Thread
-            </button>
-            </Link>
+            
           </div>
         )}
         {showMessage && <UniversalMessage message={showMessage} />}

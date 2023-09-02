@@ -15,7 +15,6 @@ async function SavedTab({ currentUserId, accountId }: Props) {
   const user = await fetchUser(accountId);
 
   const savedThreads = result.posts.filter((thread) => user.saved.includes(thread.id));
-  console.log(savedThreads);
   
 
   if (!result) {
@@ -36,6 +35,7 @@ async function SavedTab({ currentUserId, accountId }: Props) {
           comments={post.children}
           repostauthor={post.repostauthor}
           likes={post.likes}
+          isSaved
         />
       ))}
     </section>

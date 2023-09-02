@@ -198,7 +198,7 @@ export async function getActivity(userId: string) {
   }
 }
 
-export async function saveThread(userId: string, threadId: string) {
+export async function saveThread(userId: string, threadId: string, path:string) {
   try {
     connectToDB();
 
@@ -223,7 +223,7 @@ export async function saveThread(userId: string, threadId: string) {
       { saved: user.saved }, // Update the 'saved' array
       { upsert: true } // Create a new user if not found
       );
-      await User.findByIdAndUpdate(userId, { lastCheckedActivity: new Date() });
+      revalidatePath(path);
   } catch (error) {
     console.error("Error saving thread:", error);
     throw error;

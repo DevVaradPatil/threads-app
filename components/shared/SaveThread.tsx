@@ -10,9 +10,9 @@ interface Props {
 }
 
 async function SaveThread({ userId, threadId }: Props) {
-  const path = usePathname()
   const router = useRouter();
-  saveThread(userId, threadId)
+  const pathname = usePathname();
+  saveThread(userId, threadId, pathname)
   router.push('/')
   return <></>;
 }

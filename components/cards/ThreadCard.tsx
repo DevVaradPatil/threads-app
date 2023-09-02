@@ -6,6 +6,7 @@ import DeleteThread from "../forms/DeleteThread";
 import Buttons from "../shared/Buttons";
 import RepostButton from "../shared/RepostButton";
 import LikeButton from "../shared/LikeButton";
+import Save from "../shared/Save";
 interface Props {
   id: string;
   currentUserId: string;
@@ -34,6 +35,7 @@ interface Props {
     name: string;
     image: string;
   }[];
+  isSaved?: boolean;
 }
 
 function ThreadCard({
@@ -48,11 +50,12 @@ function ThreadCard({
   isComment,
   repostauthor,
   likes,
+  isSaved,
 }: Props) {
   let currentUserLiked = likes.some((like) => like._id === currentUserId);
   const date = new Date(createdAt);
   const now = new Date();
-
+  
   const timeDifferenceInSeconds = Math.floor(
     (now.getTime() - date.getTime()) / 1000
   );
@@ -73,6 +76,8 @@ function ThreadCard({
     const weeks = Math.floor(timeDifferenceInSeconds / 604800);
     formattedTimeAgo = `${weeks}w ago`;
   }
+  const newid = id.toString();
+  
 
   return (
     <article
@@ -131,8 +136,8 @@ function ThreadCard({
                     className="cursor-pointer object-contain transition"
                   />
                 </Link>
-                <RepostButton id={id}/>
-                <Buttons id={id}/>
+                <RepostButton id={newid}/>
+                <Buttons id={newid} isSaved={isSaved}/>
               </div>
 
               {isComment && comments.length > 0 && (
