@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.23.2",
     "@clerk/themes": "^1.7.5",
+    "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.2.0",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
@@ -27,10 +28,15 @@
     "lucide-react": "^0.265.0",
     "mongoose": "^7.4.2",
     "next": "13.4.13",
+    "nextjs-progressbar": "^0.0.16",
+    "nprogress": "^0.2.0",
     "postcss": "8.4.27",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-nprogress": "^0.1.6",
+    "react-progress-bar": "^0.1.0",
+    "react-top-loading-bar": "^2.3.1",
     "svix": "^1.8.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
@@ -38,5 +44,8 @@
     "typescript": "5.1.6",
     "uploadthing": "^5.3.0",
     "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/nprogress": "^0.2.0"
   }
 }

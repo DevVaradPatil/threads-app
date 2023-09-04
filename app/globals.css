@@ -64,7 +64,7 @@
   }
 
   .bottombar {
-    @apply fixed bottom-0 z-10 w-full rounded-t-2xl bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 md:hidden;
+    @apply fixed bottom-0 z-10 w-full rounded-t-2xl  p-4 backdrop-blur-lg xs:px-7 md:hidden;
   }
 
   .bottombar_container {
@@ -188,4 +188,26 @@
   100% {
     transform: translateY(0);
   }
+}
+
+/* Add this CSS to your stylesheet */
+.preloader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the height as needed */
+}
+
+.spinner {
+  border: 4px solid transparent;
+  border-top: 4px solid #8a2be2; /* Violet color (adjust as needed) */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.75s linear infinite; /* Faster animation (adjust duration as needed) */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

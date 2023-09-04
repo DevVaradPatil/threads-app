@@ -6,6 +6,7 @@ import DeleteThread from "../forms/DeleteThread";
 import Buttons from "../shared/Buttons";
 import RepostButton from "../shared/RepostButton";
 import LikeButton from "../shared/LikeButton";
+import { useTheme } from "../ThemeContext";
 interface Props {
   id: string;
   currentUserId: string;
@@ -77,7 +78,6 @@ function ThreadCard({
   }
   const newid = id.toString();
   
-
   return (
     <article
       className={`flex w-full flex-col rounded-xl h-full ${

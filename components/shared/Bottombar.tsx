@@ -6,16 +6,15 @@ import {usePathname } from 'next/navigation';
 
 function Bottombar() {
 
-
     const pathname = usePathname();
 
     return (
-        <section className="bottombar">
+        <section className='bottombar bg-glassmorphism'>
             <div className="bottombar_container">
             {sidebarLinks.map((link) => {
                     const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname == link.route;
                     return(
-                    <Link href={link.route} key={link.label} className={`bottombar_link ${isActive && 'bg-primary-500'}`}>
+                    <Link href={link.route} key={link.label} className={`bottombar_link ${isActive && 'bg-violet-700'}`}>
                         <Image
                         src={link.imgURL}
                         alt={link.label}
